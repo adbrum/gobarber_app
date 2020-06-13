@@ -1,13 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 
 // import { Container } from './styles';
+import Background from "~/components/Background";
 
 function SignOut() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <Background>
       <Text>SignOut</Text>
-    </View>
+    </Background>
   );
 }
 export default SignOut;

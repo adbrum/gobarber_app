@@ -1,13 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 
 // import { Container } from './styles';
+import Background from "~/components/Background";
 
 function Signin() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <Background>
       <Text>SignIn</Text>
-    </View>
+    </Background>
   );
 }
 export default Signin;

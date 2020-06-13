@@ -14,13 +14,20 @@ import {
 
 import Background from '~/components/Background';
 
-function Signin({ navigation }) {
+function SignUp({ navigation }) {
   return (
     <Background>
       <Container>
         <Image source={logo} />
 
         <Form>
+          <FormInput
+            icon="person-outline"
+            autocorrect={false}
+            autoCapitalize="none"
+            placeholder="Nome completo"
+          />
+
           <FormInput
             icon="mail-outline"
             keyboardType="email-address"
@@ -45,4 +52,4 @@ function Signin({ navigation }) {
     </Background>
   );
 }
-export default Signin;
+export default SignUp;

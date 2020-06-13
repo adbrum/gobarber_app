@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import Signin from '~/Pages/Signin/index';
 import SignUp from './Pages/SignUp/index';
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function Routes() {
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName={Signin}>
-        <Tab.Screen name="Signin" component={Signin} />
-        <Tab.Screen name="SignUp" component={SignUp} />
-      </Tab.Navigator>
+      <Stack.Navigator initialRouteName={Signin}>
+        <Stack.Screen name="Signin" component={Signin} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

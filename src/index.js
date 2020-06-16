@@ -6,10 +6,12 @@ import { StatusBar } from 'react-native';
 import './config/ReactotronConfig';
 
 import { store, persistor } from './store';
+
+// import App from './App';
 import Routes from './routes';
 
 // import { Container } from './styles';
-export default function App() {
+function index() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
@@ -19,3 +21,5 @@ export default function App() {
     </Provider>
   );
 }
+
+export default index;

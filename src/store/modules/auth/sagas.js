@@ -31,7 +31,7 @@ export function* signIn({ payload }) {
     // history.push('/dashboard');
   } catch (error) {
     Alert.alert(
-      'Falha na autenticaçãoXXXXXXXXX',
+      'Falha na autenticação',
       'Verifique se os seus dados estão corretos'
     );
 

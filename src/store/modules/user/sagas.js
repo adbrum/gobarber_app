@@ -1,17 +1,17 @@
-import { Alert } from 'react-native';
 import { takeLatest, call, put, all } from 'redux-saga/effects';
-
+import { Alert } from 'react-native';
 import api from '~/services/api';
 import { updateProfileSuccess, updateProfilefailure } from './actions';
 
 export function* updateProfile({ payload }) {
   try {
-    const { name, email, avatar_id, ...rest } = payload.data;
+    const { name, email, ...rest } = payload.data;
+
+    console.tron.log('XXXXXXXXXXXXXXXXXXXXXXXXXX: ', name, email, ...rest);
 
     const profile = {
       name,
       email,
-      avatar_id,
       ...(rest.oldPassword ? rest : {}),
     };
 
@@ -21,11 +21,7 @@ export function* updateProfile({ payload }) {
 
     yield put(updateProfileSuccess(response.data));
   } catch (error) {
-    Alert.alert(
-      'Falha na atualização',
-      'Houve um erro na atualização do perfil, verifique seus dados'
-    );
-
+    Alert.alert('Falha na atualização', 'Erro ao atualizar Perfil');
     yield put(updateProfilefailure());
   }
 }

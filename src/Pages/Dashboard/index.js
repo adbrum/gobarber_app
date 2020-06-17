@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
 import Appointment from '~/components/Appointment';
 import { Container, Title, List } from './styles';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,20 +15,35 @@ export default function () {
 
   return (
     <NavigationContainer>
-      {signedIn === true ? <AppTabsScreen /> : <AuthStackScreen />}
+      {signedIn ? <AppTabsScreen /> : <AuthStackScreen />}
     </NavigationContainer>
   );
 }
 
+const AuthStack = createStackNavigator();
 const DashboardStack = createStackNavigator();
-const DashboardStackScreen = () => (
+const ProfileStack = createStackNavigator();
+const AppTabs = createBottomTabNavigator();
+
+const AuthStackScreen = () => (
+  <AuthStack.Navigator headerMode="none">
+    <AuthStack.Screen name="SignIn" component={SignIn} />
+    <AuthStack.Screen name="SignUp" component={SignUp} />
+  </AuthStack.Navigator>
+);
+
+const DashboarStackScreen = () => (
   <DashboardStack.Navigator headerMode="none">
-    <DashboardStack.Screen name="Agendamentos" component={Dashboard} />
-    <DashboardStack.Screen name="Profile" component={Profile} />
+    <DashboardStack.Screen name="Dashboard" component={Dashboard} />
   </DashboardStack.Navigator>
 );
 
-const AppTabs = createBottomTabNavigator();
+const ProfileStackScreen = () => (
+  <ProfileStack.Navigator headerMode="none">
+    <ProfileStack.Screen name="Profile" component={Profile} />
+  </ProfileStack.Navigator>
+);
+
 const AppTabsScreen = () => (
   <AppTabs.Navigator
     tabBarOptions={{
@@ -42,7 +57,7 @@ const AppTabsScreen = () => (
   >
     <AppTabs.Screen
       name="Dashboard"
-      component={Dashboard}
+      component={DashboarStackScreen}
       options={{
         tabBarLabel: 'Agendamentos',
         tabBarIcon: ({ color }) => (
@@ -53,7 +68,7 @@ const AppTabsScreen = () => (
 
     <AppTabs.Screen
       name="Profile"
-      component={Profile}
+      component={ProfileStackScreen}
       options={{
         tabBarLabel: 'Meu perfil',
         tabBarIcon: ({ color }) => (
@@ -62,12 +77,4 @@ const AppTabsScreen = () => (
       }}
     />
   </AppTabs.Navigator>
-);
-
-const AuthStack = createStackNavigator();
-const AuthStackScreen = () => (
-  <AuthStack.Navigator headerMode="none">
-    <AuthStack.Screen name="SignIn" component={SignIn} />
-    <AuthStack.Screen name="SignUp" component={SignUp} />
-  </AuthStack.Navigator>
 );

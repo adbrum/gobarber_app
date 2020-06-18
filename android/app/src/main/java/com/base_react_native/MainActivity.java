@@ -1,4 +1,4 @@
-package com.mobile;
+package com.base_react_native;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "mobile";
+    return "base_react_native";
   }
 }

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Alert } from 'react-native';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 import { signOut } from '~/store/modules/auth/actions';
 import Background from '~/components/Background';
@@ -38,7 +37,6 @@ export default function Profile() {
   }, [profile]);
 
   function handleSubmit() {
-    Alert.alert('message');
     dispatch(
       updateProfileRequest({
         name,

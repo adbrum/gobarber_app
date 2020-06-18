@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,6 +10,10 @@ import SignIn from '~/Pages/SignIn';
 import SignUp from '~/Pages/SignUp';
 import Dashboard from '~/Pages/Dashboard';
 import Profile from '~/Pages/Profile';
+
+import SelectProvider from '~/Pages/New/SelectProvider';
+import SelectDateTime from '~/Pages/New/SelectDateTime';
+import Confirm from '~/Pages/New/Confirm';
 
 export default function () {
   const signedIn = useSelector((state) => state.auth.signed);
@@ -21,6 +26,7 @@ export default function () {
 }
 
 const AuthStack = createStackNavigator();
+const NewStack = createStackNavigator();
 const DashboardStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 const AppTabs = createBottomTabNavigator();
@@ -30,6 +36,36 @@ const AuthStackScreen = () => (
     <AuthStack.Screen name="SignIn" component={SignIn} />
     <AuthStack.Screen name="SignUp" component={SignUp} />
   </AuthStack.Navigator>
+);
+
+const NewStackScreen = ({ navigation }) => (
+  <NewStack.Navigator
+    screenOptions={{
+      headerTransparent: true,
+      headerTintColor: '#fff',
+      headerLeftContainerStyle: {
+        marginLeft: 20,
+      },
+    }}
+  >
+    <NewStack.Screen
+      name="Selecione o prestador"
+      component={SelectProvider}
+      options={{
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Dashboard');
+            }}
+          >
+            <Icon name="chevron-left" size={20} color="#fff" />
+          </TouchableOpacity>
+        ),
+      }}
+    />
+    <NewStack.Screen name="SelectDateTime" component={SelectDateTime} />
+    <NewStack.Screen name="Confirm" component={Confirm} />
+  </NewStack.Navigator>
 );
 
 const DashboarStackScreen = () => (
@@ -62,6 +98,17 @@ const AppTabsScreen = () => (
         tabBarLabel: 'Agendamentos',
         tabBarIcon: ({ color }) => (
           <Icon name="event" color={color} size={20} />
+        ),
+      }}
+    />
+
+    <AppTabs.Screen
+      name="New"
+      component={NewStackScreen}
+      options={{
+        tabBarLabel: 'New',
+        tabBarIcon: ({ color }) => (
+          <Icon name="add-circle-outline" color={color} size={20} />
         ),
       }}
     />

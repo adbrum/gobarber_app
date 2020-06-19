@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-// import { Container } from './styles';
+import { Container } from './styles';
+import DateInput from '~/components/DateInput';
 
 import Background from '~/components/Background';
 
-const SelectDateTime = () => {
-  return <Background />;
-};
+export default function SelectDateTime() {
+  const [date, setDate] = useState(new Date());
 
-export default SelectDateTime;
+  return (
+    <Background>
+      <Container>
+        <DateInput date={date} onChange={setDate} />
+      </Container>
+    </Background>
+  );
+}

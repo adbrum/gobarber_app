@@ -6,7 +6,7 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const ProvidersList = styled.FlatList.attrs({
-  showVerticalScrollIndicator: false,
+  showsVerticalScrollIndicator: false,
   numColumns: 2,
 })`
   margin-top: 60px;
@@ -16,10 +16,8 @@ export const ProvidersList = styled.FlatList.attrs({
 export const Provider = styled(RectButton)`
   background: #fff;
   border-radius: 4px;
-  border-radius: 4px;
   padding: 20px;
   flex: 1;
-
   align-items: center;
   margin: 0 10px 20px;
 `;

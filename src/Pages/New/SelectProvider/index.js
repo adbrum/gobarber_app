@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import api from '~/services/api';
-import { Container, ProvidersList, Provider, Avatar, Name } from './styles';
 
 import Background from '~/components/Background';
 
-function SelectProvider({ navigation }) {
+import { Container, ProvidersList, Provider, Avatar, Name } from './styles';
+
+import api from '~/services/api';
+
+export default function SelectProvider({ navigation }) {
   const [providers, setProviders] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ function SelectProvider({ navigation }) {
     }
 
     loadProviders();
-  }, []);
+  });
 
   return (
     <Background>
@@ -25,7 +27,9 @@ function SelectProvider({ navigation }) {
           keyExtractor={(provider) => String(provider.id)}
           renderItem={({ item: provider }) => (
             <Provider
-              onPress={() => navigation.navigate('SelectDateTime', provider)}
+              onPress={() =>
+                navigation.navigate('SelectDateTime', { provider })
+              }
             >
               <Avatar
                 source={{
@@ -42,5 +46,3 @@ function SelectProvider({ navigation }) {
     </Background>
   );
 }
-
-export default SelectProvider;

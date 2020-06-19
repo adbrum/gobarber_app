@@ -55,8 +55,6 @@ export default function Profile() {
   return (
     <Background>
       <Container>
-        <Title>Meu perfil</Title>
-
         <Form>
           <FormInput
             icon="person-outline"

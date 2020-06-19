@@ -28,6 +28,7 @@ export const Form = styled.ScrollView.attrs({
   },
 })`
   align-self: stretch;
+  margin-top: 30px;
 `;
 
 export const FormInput = styled(Input)`

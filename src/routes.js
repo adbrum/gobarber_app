@@ -49,9 +49,11 @@ const NewStackScreen = ({ navigation }) => (
     }}
   >
     <NewStack.Screen
-      name="Selecione o prestador"
+      name="SelectProvider"
       component={SelectProvider}
       options={{
+        title: 'Selecione o prestador',
+        headerTitleAlign: 'center',
         headerLeft: () => (
           <TouchableOpacity
             onPress={() => {
@@ -63,20 +65,83 @@ const NewStackScreen = ({ navigation }) => (
         ),
       }}
     />
-    <NewStack.Screen name="SelectDateTime" component={SelectDateTime} />
-    <NewStack.Screen name="Confirm" component={Confirm} />
+    <NewStack.Screen
+      name="SelectDateTime"
+      component={SelectDateTime}
+      options={{
+        title: 'Selecione o horário',
+        headerTitleAlign: 'center',
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SelectProvider');
+            }}
+          >
+            <Icon name="chevron-left" size={20} color="#fff" />
+          </TouchableOpacity>
+        ),
+      }}
+    />
+    <NewStack.Screen
+      name="Confirm"
+      component={Confirm}
+      options={{
+        title: 'Confirmar',
+        headerTitleAlign: 'center',
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Dasborad');
+            }}
+          >
+            <Icon name="chevron-left" size={20} color="#fff" />
+          </TouchableOpacity>
+        ),
+      }}
+    />
   </NewStack.Navigator>
 );
 
 const DashboarStackScreen = () => (
-  <DashboardStack.Navigator headerMode="none">
-    <DashboardStack.Screen name="Dashboard" component={Dashboard} />
+  <DashboardStack.Navigator
+    screenOptions={{
+      headerTransparent: true,
+      headerTintColor: '#fff',
+      headerLeftContainerStyle: {
+        marginLeft: 20,
+      },
+    }}
+  >
+    <DashboardStack.Screen
+      name="Dashboard"
+      component={Dashboard}
+      options={{
+        title: 'Agendamento',
+        headerTitleAlign: 'center',
+      }}
+    />
   </DashboardStack.Navigator>
 );
 
 const ProfileStackScreen = () => (
-  <ProfileStack.Navigator headerMode="none">
-    <ProfileStack.Screen name="Profile" component={Profile} />
+  <ProfileStack.Navigator
+    screenOptions={{
+      headerTransparent: true,
+      headerTintColor: '#fff',
+
+      headerLeftContainerStyle: {
+        marginLeft: 20,
+      },
+    }}
+  >
+    <ProfileStack.Screen
+      name="Profile"
+      component={Profile}
+      options={{
+        title: 'Meu perfil',
+        headerTitleAlign: 'center',
+      }}
+    />
   </ProfileStack.Navigator>
 );
 
@@ -96,6 +161,7 @@ const AppTabsScreen = () => (
       component={DashboarStackScreen}
       options={{
         tabBarLabel: 'Agendamentos',
+        headerTitleAlign: 'center',
         tabBarIcon: ({ color }) => (
           <Icon name="event" color={color} size={20} />
         ),
@@ -106,7 +172,7 @@ const AppTabsScreen = () => (
       name="New"
       component={NewStackScreen}
       options={{
-        tabBarLabel: 'New',
+        tabBarLabel: 'Agendar',
         tabBarIcon: ({ color }) => (
           <Icon name="add-circle-outline" color={color} size={20} />
         ),

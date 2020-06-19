@@ -1,10 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
 
 // import { Container } from './styles';
 
+import Background from '~/components/Background';
+
 const Confirm = () => {
-  return <View />;
+  return <Background />;
 };
 
 export default Confirm;

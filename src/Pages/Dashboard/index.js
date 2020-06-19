@@ -32,8 +32,6 @@ export default function Dashboard() {
   return (
     <Background>
       <Container>
-        <Title>Agendamentos</Title>
-
         <List
           data={appointments}
           keyExtractor={(item) => String(item.id)}

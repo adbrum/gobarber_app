@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Text } from 'react-native';
 
 import Background from '~/components/Background';
 
@@ -13,11 +14,13 @@ export default function SelectProvider({ navigation }) {
     async function loadProviders() {
       const response = await api.get('providers');
 
+      console.tron.log(JSON.stringify('XXXXXXXXXXXXXXXXXXXXXXX: ', providers));
+
       setProviders(response.data);
     }
 
     loadProviders();
-  });
+  }, []);
 
   return (
     <Background>

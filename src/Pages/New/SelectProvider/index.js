@@ -14,8 +14,6 @@ export default function SelectProvider({ navigation }) {
     async function loadProviders() {
       const response = await api.get('providers');
 
-      console.tron.log(JSON.stringify('XXXXXXXXXXXXXXXXXXXXXXX: ', providers));
-
       setProviders(response.data);
     }
 

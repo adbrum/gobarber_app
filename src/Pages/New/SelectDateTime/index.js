@@ -6,14 +6,14 @@ import api from '~/services/api';
 import Background from '~/components/Background';
 
 function SelectDateTime({ route, navigation }) {
-  const { provider } = route.params;
-
   const [date, setDate] = useState(new Date());
   const [hours, setHours] = useState([]);
 
+  const { provider } = route.params;
+
   useEffect(() => {
     async function loadAvailable() {
-      const response = await api.get(`/providers/${provider.id}/avaliable`, {
+      const response = await api.get(`providers/${provider.id}/avaliable`, {
         params: {
           date: date.getTime(),
         },

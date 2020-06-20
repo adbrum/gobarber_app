@@ -91,7 +91,7 @@ const NewStackScreen = ({ navigation }) => (
         headerLeft: () => (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Dasborad');
+              navigation.goBack();
             }}
           >
             <Icon name="chevron-left" size={20} color="#fff" />

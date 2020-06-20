@@ -147,6 +147,9 @@ const ProfileStackScreen = () => (
 
 const AppTabsScreen = () => (
   <AppTabs.Navigator
+    shifting
+    sceneAnimationEnabled={false}
+    backBehavior="initialRoute"
     tabBarOptions={{
       keyboardHidesTabBar: true,
       activeTintColor: '#FFF',

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { withNavigationFocus } from 'react-navigation';
+import { useIsFocused } from '@react-navigation/native';
 import Background from '~/components/Background';
 import Appointment from '~/components/Appointment';
 import { Container, Title, List } from './styles';
 import api from '~/services/api';
 
-function Dashboard({ isFocused }) {
+function Dashboard() {
   const [appointments, setAppointments] = useState([]);
 
   async function loadAppointments() {
     const response = await api.get('/appointments');
     setAppointments(response.data);
   }
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     if (isFocused) {
@@ -48,4 +49,4 @@ function Dashboard({ isFocused }) {
   );
 }
 
-export default withNavigationFocus(Dashboard);
+export default Dashboard;

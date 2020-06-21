@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CommonActions } from '@react-navigation/native';
 
 import { Container, HourList, Hour, Title } from './styles';
 import DateInput from '~/components/DateInput';
@@ -21,6 +22,7 @@ function SelectDateTime({ route, navigation }) {
 
       setHours(response.data);
     }
+
     loadAvailable();
   }, [date, provider]);
 

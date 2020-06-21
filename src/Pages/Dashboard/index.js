@@ -37,6 +37,7 @@ function Dashboard() {
   return (
     <Background>
       <Container>
+        <Title />
         <List
           data={appointments}
           keyExtractor={(item) => String(item.id)}

@@ -91,7 +91,7 @@ const NewStackScreen = ({ navigation }) => (
         headerLeft: () => (
           <TouchableOpacity
             onPress={() => {
-              navigation.goBack();
+              navigation.navigate('SelectDateTime');
             }}
           >
             <Icon name="chevron-left" size={20} color="#fff" />
@@ -147,9 +147,9 @@ const ProfileStackScreen = () => (
 
 const AppTabsScreen = () => (
   <AppTabs.Navigator
+    initialRouteName="Dashboard"
     shifting
     sceneAnimationEnabled={false}
-    backBehavior="initialRoute"
     tabBarOptions={{
       keyboardHidesTabBar: true,
       activeTintColor: '#FFF',
